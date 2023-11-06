@@ -1,0 +1,23 @@
+db.createCollection ('employees')
+
+db.employees.insertOne({name:"Kalpesh", age:20, salary:700000})
+
+db.employees.insertMany([{name:"harsh", age:20, salary:700000},{name: "sanved", age:21, salary: 632733},{name:"Arnav", age:50, salary:00}])
+
+db.employees.updateOne({name:"Arnav"},{$set:{salary:500000}}) 
+
+db.employees.find({name:"Arnav"})
+
+db.employees.aggregate([{$sort:{age: -1}}])
+
+db.employees.aggregate([{$sort:{age: +1}}])
+
+db.employees.aggregate([{$group:{_id:null, totalSalary: {$sum: "$salary"}}}])
+
+db.employees.aggregate([{$group:{_id:null, avgSalary: {$avg: "$salary"}}}])
+
+db.employees.deleteOne({name:"Arnav"})
+
+db.employees.find({age:{$gt:20}})
+
+db.employees.deleteMany({name: { $in: ["Kalpesh", "harsh"] }})
