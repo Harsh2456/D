@@ -1,0 +1,20 @@
+create database imp;
+
+use imp;
+
+create table importexport(id INT, name VARCHAR(45), marks INT);
+
+load data infile "C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\importexport.csv"
+         into table importexport
+         fields terminated by ','
+         optionally enclosed by '"'
+         lines terminated by '\n'
+         ignore 1 rows;
+
+select *from importexport;
+
+select * from importexport
+         into outfile "C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\fine_backup.csv"
+         fields terminated by ','
+         optionally enclosed by '"'
+         lines terminated by '\r\n';
